@@ -9,6 +9,7 @@ namespace MeteoApi.Models
     public class Country
     {
         public int IdCountry { get; set; }
+        [StringLength(50)]
         public string Name { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace DTO
 
         public double Humidity { get; set; }
 
-        public string String { get; set; }
+        public string State { get; set; }
 
         public int IdWeatherCity { get; set; }
     }

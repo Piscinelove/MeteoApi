@@ -10,6 +10,7 @@ namespace MeteoApi.Models
     {
         public int IdCanton { get; set; }
 
+        [StringLength(50)]
         public string Name { get; set; }
 
         public int IdCantonCountry { get; set; }
