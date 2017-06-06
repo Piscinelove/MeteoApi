@@ -52,6 +52,9 @@ namespace MeteoApi.Controllers
                 return BadRequest();
             }
 
+            db.Cities.Attach(weather.City);
+            db.States.Attach(weather.State);
+
             db.Entry(weather).State = EntityState.Modified;
 
             try
@@ -81,8 +84,10 @@ namespace MeteoApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            db.Cities.Attach(weather.City);
+            db.States.Attach(weather.State);
             db.Weathers.Add(weather);
+
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = weather.Id }, weather);
