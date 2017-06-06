@@ -20,7 +20,8 @@ namespace MeteoApi
         public double TemperatureMax { get; set; }
         public double Humidity { get; set; }
         public double Precipitation { get; set; }
-    
+   
+
         public virtual City City { get; set; }
         public virtual State State { get; set; }
     }
