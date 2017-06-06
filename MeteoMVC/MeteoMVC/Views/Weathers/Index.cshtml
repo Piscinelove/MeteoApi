@@ -6,51 +6,79 @@
 
 <h2>Index</h2>
 
-<p>
+<button class="button">
     @Html.ActionLink("Create New", "Create")
-</p>
+</button>
 <table class="table">
-    <tr>
+    <tr class="trHead">
+        <th>
+           Weather
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TemperatureMin)
+            Minimum
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TemperatureMax)
+            Maximum
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Humidity)
+            Humidity
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Precipitation)
+            Precipitation
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.City.Name)
+           City
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.State.Name)
+            State
         </th>
-        <th></th>
+        <th>
+            Settings
+        </th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr class="tr">
+        <td>
+       @switch (item.State.Id)
+       {
+           case 1:
+                    <img class="img-responsive" src="~/icon/soleil.png"/>
+               break;
+           case 2:
+            <img class="img-responsive" src="~/icon/nuage.png" />
+               break;
+           case 3:
+            <img class="img-responsive" src="~/icon/pluie.png" />
+               break;
+
+           case 4:
+            <img class="img-responsive" src="~/icon/foudre.png" />
+               break;
+           case 5:
+            <img class="img-responsive" src="~/icon/neige.png" />
+               break;
+
+       }
+
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TemperatureMin)
+            @Html.DisplayFor(modelItem => item.TemperatureMin) °C
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TemperatureMax)
+            @Html.DisplayFor(modelItem => item.TemperatureMax) °C
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Humidity)
+            @Html.DisplayFor(modelItem => item.Humidity) %
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Precipitation)
+            @Html.DisplayFor(modelItem => item.Precipitation) mm
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.City.Name)
@@ -59,9 +87,19 @@
             @Html.DisplayFor(modelItem => item.State.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            
+                <a href="<%= Url.Action('Edit',new { id = item.Id })">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>  |
+
+                <a href="<%= Url.Action('Details',new { id = item.Id })">
+                    <span class="glyphicon glyphicon-th-list"></span>
+                </a> |
+                
+                <a href="<%= Url.Action('Delete',new { id = item.Id })">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+            
         </td>
     </tr>
 }
