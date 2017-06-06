@@ -14,9 +14,9 @@ namespace MeteoMVC.Controllers
         public ActionResult Index()
         {
             Canton c = new Canton();
-            c.IdCanton = 1;
+            c.Id = 1;
             c.Name = "Wallis";
-            c.IdCantonCountry = 1;
+            c.CountryId = 1;
 
 
             AccessWebAPI access = new AccessWebAPI();

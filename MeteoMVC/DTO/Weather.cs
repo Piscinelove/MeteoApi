@@ -9,11 +9,13 @@ namespace DTO
     public class Weather
     {
 
-        public int IdTemperature { get; set; }
+        public int Id { get; set; }
 
         public DateTime Date { get; set; }
 
-        public double Temperature { get; set; }
+        public double TemperatureMin { get; set; }
+
+        public double TemperatureMax { get; set; }
 
         public double Humidity { get; set; }
 

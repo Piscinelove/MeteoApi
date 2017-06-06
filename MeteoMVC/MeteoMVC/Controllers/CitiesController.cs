@@ -15,9 +15,9 @@ namespace MeteoMVC.Controllers
         public ActionResult Index()
         {
             City c = new City();
-            c.IdCity = 1;
+            c.Id = 1;
             c.Name = "Sierre";
-            c.IdCityCanton = 1;
+            c.CantonId = 1;
 
 
             AccessWebAPI access = new AccessWebAPI();

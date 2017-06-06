@@ -14,9 +14,9 @@ namespace MeteoMVC.Controllers
         public ActionResult Index()
         {
                 Weather w = new Weather();
-                w.IdTemperature =1;
+                w.Id =1;
                 w.Date=new DateTime(2017,05,31);
-                w.Temperature = 30.5;
+                w.TemperatureMin = 30.5;
                 w.Humidity = 50.4;
                 w.State = "sunny";
                 w.IdWeatherCity=1;

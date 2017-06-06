@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class Canton
+   public class State
     {
-    
         public int Id { get; set; }
 
         public string Name { get; set; }
-
-        public int CountryId { get; set; }
-
+    
     }
 }

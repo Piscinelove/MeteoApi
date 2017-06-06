@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/06/2017 09:20:42
+-- Date Created: 06/06/2017 09:51:59
 -- Generated from EDMX file: C:\Users\Rafael Peixoto\Downloads\VisualStudio\MeteoApp\MeteoApi\MeteoApi\MeteoApi\Model.edmx
 -- --------------------------------------------------
 
@@ -17,14 +17,17 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_WeatherCity]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Cities] DROP CONSTRAINT [FK_WeatherCity];
-GO
 IF OBJECT_ID(N'[dbo].[FK_CantonCity]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Cities] DROP CONSTRAINT [FK_CantonCity];
 GO
 IF OBJECT_ID(N'[dbo].[FK_CountryCanton]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Cantons] DROP CONSTRAINT [FK_CountryCanton];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CityWeather]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Weathers] DROP CONSTRAINT [FK_CityWeather];
+GO
+IF OBJECT_ID(N'[dbo].[FK_StateWeather]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Weathers] DROP CONSTRAINT [FK_StateWeather];
 GO
 
 -- --------------------------------------------------
@@ -43,6 +46,9 @@ GO
 IF OBJECT_ID(N'[dbo].[Countries]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Countries];
 GO
+IF OBJECT_ID(N'[dbo].[States]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[States];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -53,9 +59,9 @@ CREATE TABLE [dbo].[Weathers] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Date] datetime  NOT NULL,
     [TemperatureMin] float  NOT NULL,
-    [TemperatureMax] nvarchar(max)  NOT NULL,
+    [TemperatureMax] float  NOT NULL,
     [Humidity] float  NOT NULL,
-    [Precipitation] nvarchar(max)  NOT NULL,
+    [Precipitation] float  NOT NULL,
     [City_Id] int  NOT NULL,
     [State_Id] int  NOT NULL
 );

@@ -8,7 +8,7 @@ namespace DTO
 {
     public class Country
     {
-        public int IdCountry { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
     }

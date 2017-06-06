@@ -35,9 +35,9 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="TemperatureMin" Type="float" Nullable="false" />
-    <Property Name="TemperatureMax" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TemperatureMax" Type="float" Nullable="false" />
     <Property Name="Humidity" Type="float" Nullable="false" />
-    <Property Name="Precipitation" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Precipitation" Type="float" Nullable="false" />
     <Property Name="City_Id" Type="int" Nullable="false" />
     <Property Name="State_Id" Type="int" Nullable="false" />
   </EntityType>
@@ -153,9 +153,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Nullable="false" />
           <Property Name="TemperatureMin" Type="Double" Nullable="false" />
-          <Property Name="TemperatureMax" Type="String" Nullable="false" />
+          <Property Name="TemperatureMax" Type="Double" Nullable="false" />
           <Property Name="Humidity" Type="Double" Nullable="false" />
-          <Property Name="Precipitation" Type="String" Nullable="false" />
+          <Property Name="Precipitation" Type="Double" Nullable="false" />
           <NavigationProperty Name="City" Relationship="Model.CityWeather" FromRole="Weather" ToRole="City" />
           <NavigationProperty Name="State" Relationship="Model.StateWeather" FromRole="Weather" ToRole="State" />
         </EntityType>

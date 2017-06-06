@@ -17,9 +17,9 @@ namespace MeteoApi
         public int Id { get; set; }
         public System.DateTime Date { get; set; }
         public double TemperatureMin { get; set; }
-        public string TemperatureMax { get; set; }
+        public double TemperatureMax { get; set; }
         public double Humidity { get; set; }
-        public string Precipitation { get; set; }
+        public double Precipitation { get; set; }
     
         public virtual City City { get; set; }
         public virtual State State { get; set; }

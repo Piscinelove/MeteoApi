@@ -8,11 +8,11 @@ namespace DTO
 {
    public class City
     {
-        public int IdCity { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public int IdCityCanton { get; set; }
+        public int CantonId { get; set; }
     
     }
 }

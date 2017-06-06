@@ -15,7 +15,7 @@ namespace MeteoMVC.Controllers
         public ActionResult Index()
         {
             Country c = new Country();
-            c.IdCountry = 1;
+            c.Id = 1;
             c.Name = "Switzerland";
 
 
