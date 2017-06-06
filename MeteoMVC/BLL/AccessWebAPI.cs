@@ -128,7 +128,7 @@ namespace BLL
         public List<City> GetCities()
         {
             //want to access this link
-            string uri = baseUri;
+            string uri = baseUri + "/cities";
 
             HttpClient client = new HttpClient();
             //async is for access the link and do something else
@@ -138,9 +138,22 @@ namespace BLL
             client.Dispose();
         }
 
+        public City GetCity(int id)
+        {
+            //want to access this link
+            string uri = baseUri + "/cities/" + id;
+
+            HttpClient client = new HttpClient();
+            //async is for access the link and do something else
+            //new thread
+            Task<string> response = client.GetStringAsync(uri);
+            return JsonConvert.DeserializeObject<City>(response.Result);
+            client.Dispose();
+        }
+
         public bool PostCities(City c)
         {
-            string uri = baseUri;
+            string uri = baseUri + "/cities";
             using (HttpClient httpClient = new HttpClient())
             {
                 string pro = JsonConvert.SerializeObject(c);
@@ -152,7 +165,7 @@ namespace BLL
 
         public bool PutCities(City c)
         {
-            string uri = baseUri;
+            string uri = baseUri + "/cities";
             using (HttpClient httpClient = new HttpClient())
             {
                 string pro = JsonConvert.SerializeObject(c);
@@ -162,9 +175,9 @@ namespace BLL
             }
         }
 
-        public bool DeleteCities(int i)
+        public bool DeleteCities(int id)
         {
-            string uri = baseUri;
+            string uri = baseUri + "/cities/"+id;
             using (HttpClient httpClient = new HttpClient())
             {
                 Task<HttpResponseMessage> reponse = httpClient.DeleteAsync(uri);
@@ -224,7 +237,7 @@ namespace BLL
         public List<State> GetStates()
         {
             //want to access this link
-            string uri = baseUri;
+            string uri = baseUri + "/states";
 
             HttpClient client = new HttpClient();
             //async is for access the link and do something else
@@ -234,9 +247,22 @@ namespace BLL
             client.Dispose();
         }
 
+        public State GetState(int id)
+        {
+            //want to access this link
+            string uri = baseUri + "/states/" + id;
+
+            HttpClient client = new HttpClient();
+            //async is for access the link and do something else
+            //new thread
+            Task<string> response = client.GetStringAsync(uri);
+            return JsonConvert.DeserializeObject<State>(response.Result);
+            client.Dispose();
+        }
+
         public bool PostStates(State c)
         {
-            string uri = baseUri;
+            string uri = baseUri + "/states";
             using (HttpClient httpClient = new HttpClient())
             {
                 string pro = JsonConvert.SerializeObject(c);
@@ -248,7 +274,7 @@ namespace BLL
 
         public bool PutStates(State c)
         {
-            string uri = baseUri;
+            string uri = baseUri + "/states";
             using (HttpClient httpClient = new HttpClient())
             {
                 string pro = JsonConvert.SerializeObject(c);
@@ -258,9 +284,9 @@ namespace BLL
             }
         }
 
-        public bool DeleteStates(int i)
+        public bool DeleteStates(int id)
         {
-            string uri = baseUri;
+            string uri = baseUri + "/states/"+id;
             using (HttpClient httpClient = new HttpClient())
             {
                 Task<HttpResponseMessage> reponse = httpClient.DeleteAsync(uri);

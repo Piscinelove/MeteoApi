@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BLL;
 using DTO;
+using MeteoMVC.Models;
 
 namespace MeteoMVC.Controllers
 {
@@ -33,7 +34,27 @@ namespace MeteoMVC.Controllers
         public ActionResult Create()
         {
             AccessWebAPI access = new AccessWebAPI();
-            return View();
+            CreateWeatherVM vm = new CreateWeatherVM();
+            vm.Cities = access.GetCities();
+            vm.States = access.GetStates();
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult Create(CreateWeatherVM vm)
+        {
+            AccessWebAPI access = new AccessWebAPI();
+            Weather newWeather = new Weather();
+            newWeather.Date = vm.Weather.Date;
+            newWeather.TemperatureMin = vm.Weather.TemperatureMin;
+            newWeather.TemperatureMax = vm.Weather.TemperatureMax;
+            newWeather.Humidity = vm.Weather.Humidity;
+            newWeather.Precipitation = vm.Weather.Precipitation;
+            newWeather.City = access.GetCity(vm.CheckedCity);
+            newWeather.State = access.GetState(vm.CheckedState);
+            access.PostWeathers(newWeather);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
