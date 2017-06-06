@@ -140,6 +140,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Weathers\Index.cshtml" />
     <Content Include="Views\Weathers\Edit.cshtml" />
+    <Content Include="Views\Weathers\Details.cshtml" />
+    <Content Include="Views\Weathers\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
