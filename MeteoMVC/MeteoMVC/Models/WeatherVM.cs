@@ -6,7 +6,7 @@ using DTO;
 
 namespace MeteoMVC.Models
 {
-    public class CreateWeatherVM
+    public class WeatherVM
     {
 
         public Weather Weather { get; set; }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/06/2017 09:51:59
+-- Date Created: 06/06/2017 15:27:27
 -- Generated from EDMX file: C:\Users\Rafael Peixoto\Downloads\VisualStudio\MeteoApp\MeteoApi\MeteoApi\MeteoApi\Model.edmx
 -- --------------------------------------------------
 

@@ -1,4 +1,4 @@
-﻿@model MeteoMVC.Models.CreateWeatherVM
+﻿@model MeteoMVC.Models.WeatherVM
 
 
 @{
@@ -62,6 +62,7 @@
             </label>
             <div class="col-md-10">
                 <select id="cities" name="CheckedCity">
+
                     @foreach (var city in Model.Cities)
                     {
 

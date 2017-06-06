@@ -34,7 +34,7 @@ namespace MeteoMVC.Controllers
         public ActionResult Create()
         {
             AccessWebAPI access = new AccessWebAPI();
-            CreateWeatherVM vm = new CreateWeatherVM();
+            WeatherVM vm = new WeatherVM();
             vm.Cities = access.GetCities();
             vm.States = access.GetStates();
 
@@ -42,7 +42,7 @@ namespace MeteoMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CreateWeatherVM vm)
+        public ActionResult Create(WeatherVM vm)
         {
             AccessWebAPI access = new AccessWebAPI();
             Weather newWeather = new Weather();

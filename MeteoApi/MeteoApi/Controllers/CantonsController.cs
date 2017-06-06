@@ -16,10 +16,13 @@ namespace MeteoApi.Controllers
     {
         private ModelContainer db = new ModelContainer();
 
+
         // GET: api/Cantons
         public IQueryable<Canton> GetCantons()
         {
             return db.Cantons;
+
+
         }
 
         // GET: api/Cantons/5
@@ -28,6 +31,7 @@ namespace MeteoApi.Controllers
         {
             Canton canton = db.Cantons.Find(id);
             if (canton == null)
+
             {
                 return NotFound();
             }
