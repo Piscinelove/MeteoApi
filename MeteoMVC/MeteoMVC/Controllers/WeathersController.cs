@@ -27,8 +27,33 @@ namespace MeteoMVC.Controllers
                 access.PostWeathers(w);
             */
             AccessWebAPI access = new AccessWebAPI();
-            List<Weather> list = access.GetWeathers();
-            return View(list);
+            return View(access.GetWeathers());
         }
+
+        public ActionResult Create()
+        {
+            AccessWebAPI access = new AccessWebAPI();
+            return View();
+        }
+
+        public ActionResult Edit(int id)
+        {
+            AccessWebAPI access = new AccessWebAPI();
+            return View(access.GetWeather(id));
+        }
+
+        public ActionResult Details(int id)
+        {
+            AccessWebAPI access = new AccessWebAPI();
+            return View(access.GetWeather(id));
+        }
+
+        public ActionResult Delete(int id)
+        {
+            AccessWebAPI access = new AccessWebAPI();
+            return View(access.DeleteWeathers(id));
+        }
+
+
     }
 }

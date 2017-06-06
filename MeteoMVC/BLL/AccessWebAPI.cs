@@ -29,6 +29,19 @@ namespace BLL
             client.Dispose();
         }
 
+        public Weather GetWeather(int id)
+        {
+            //want to access this link
+            string uri = baseUri + "/weathers/"+id;
+
+            HttpClient client = new HttpClient();
+            //async is for access the link and do something else
+            //new thread
+            Task<string> response = client.GetStringAsync(uri);
+            return JsonConvert.DeserializeObject<Weather>(response.Result);
+            client.Dispose();
+        }
+
         public bool PostWeathers(Weather w)
         {
             string uri = baseUri + "/weathers";
@@ -53,9 +66,9 @@ namespace BLL
             }
         }
 
-        public bool DeleteWeathers(int i)
+        public bool DeleteWeathers(int id)
         {
-            string uri = baseUri + "/weathers";
+            string uri = baseUri + "/weathers"+id;
             using (HttpClient httpClient = new HttpClient())
             {
                 Task<HttpResponseMessage> reponse = httpClient.DeleteAsync(uri);
