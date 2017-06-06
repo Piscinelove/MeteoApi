@@ -13,6 +13,7 @@ namespace MeteoMVC.Controllers
         // GET: Cantons
         public ActionResult Index()
         {
+            /*
             Canton c = new Canton();
             c.Id = 1;
             c.Name = "Wallis";
@@ -21,8 +22,9 @@ namespace MeteoMVC.Controllers
 
             AccessWebAPI access = new AccessWebAPI();
             access.PostCantons(c);
-
-            return View(access.getCantons());
+            */
+            AccessWebAPI access = new AccessWebAPI();
+            return View(access.GetCantons());
         }
     }
 }

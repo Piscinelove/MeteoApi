@@ -14,6 +14,7 @@ namespace MeteoMVC.Controllers
         // GET: Cities
         public ActionResult Index()
         {
+            /*
             City c = new City();
             c.Id = 1;
             c.Name = "Sierre";
@@ -22,8 +23,9 @@ namespace MeteoMVC.Controllers
 
             AccessWebAPI access = new AccessWebAPI();
             access.PostCities(c);
-
-            return View(access.getCities());
+            */
+            AccessWebAPI access = new AccessWebAPI();
+            return View(access.GetCities());
         }
     }
 }

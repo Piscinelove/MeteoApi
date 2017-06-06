@@ -19,8 +19,10 @@ namespace DTO
 
         public double Humidity { get; set; }
 
-        public string State { get; set; }
+        public double Precipitation { get; set; }
 
-        public int IdWeatherCity { get; set; }
+        public City City { get; set; }
+
+        public State State { get; set; }
     }
 }

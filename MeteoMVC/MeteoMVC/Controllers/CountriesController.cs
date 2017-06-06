@@ -14,15 +14,16 @@ namespace MeteoMVC.Controllers
         // GET: Countries
         public ActionResult Index()
         {
+            /*
             Country c = new Country();
             c.Id = 1;
             c.Name = "Switzerland";
 
 
             AccessWebAPI access = new AccessWebAPI();
-            access.PostCountries(c);
-
-            return View(access.getCountries());
+            access.PostCountries(c);*/
+            AccessWebAPI access = new AccessWebAPI();
+            return View(access.GetCountries());
         }
     }
 }

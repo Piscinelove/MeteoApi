@@ -19,7 +19,9 @@ namespace MeteoApi.Controllers
         // GET: api/Weathers
         public IQueryable<Weather> GetWeathers()
         {
-            return db.Weathers;
+            var query = from weather in db.Weathers.Include("City")
+                        select weather;
+            return query;
         }
 
         // GET: api/Weathers/5

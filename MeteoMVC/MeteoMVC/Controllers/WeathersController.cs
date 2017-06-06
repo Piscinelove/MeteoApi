@@ -13,6 +13,7 @@ namespace MeteoMVC.Controllers
         // GET: Weathers
         public ActionResult Index()
         {
+            /*
                 Weather w = new Weather();
                 w.Id =1;
                 w.Date=new DateTime(2017,05,31);
@@ -22,10 +23,12 @@ namespace MeteoMVC.Controllers
                 w.IdWeatherCity=1;
 
           
-                AccessWebAPI access = new AccessWebAPI();
+
                 access.PostWeathers(w);
-              
-                return View(access.getWeathers());
+            */
+            AccessWebAPI access = new AccessWebAPI();
+            List<Weather> list = access.GetWeathers();
+            return View(list);
         }
     }
 }

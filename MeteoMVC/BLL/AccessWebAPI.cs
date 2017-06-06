@@ -12,14 +12,14 @@ namespace BLL
     public class AccessWebAPI
     {
 
-        private string baseUri = "http://localhost:2998/api/ProductsEF/";
+        private string baseUri = "http://localhost:12410/api/";
 
 
         /*-------------------METHODE WEATHER-----------------------------------*/
-        public List<Weather> getWeathers()
+        public List<Weather> GetWeathers()
         {
             //want to access this link
-            string uri = baseUri;
+            string uri = baseUri + "/weathers";
 
             HttpClient client = new HttpClient();
             //async is for access the link and do something else
@@ -31,7 +31,7 @@ namespace BLL
 
         public bool PostWeathers(Weather w)
         {
-            string uri = baseUri;
+            string uri = baseUri + "/weathers";
             using (HttpClient httpClient = new HttpClient())
             {
                 string pro = JsonConvert.SerializeObject(w);
@@ -43,7 +43,7 @@ namespace BLL
 
         public bool PutWeathers(Weather w)
         {
-            string uri = baseUri;
+            string uri = baseUri + "/weathers";
             using (HttpClient httpClient = new HttpClient())
             {
                 string pro = JsonConvert.SerializeObject(w);
@@ -55,7 +55,7 @@ namespace BLL
 
         public bool DeleteWeathers(int i)
         {
-            string uri = baseUri;
+            string uri = baseUri + "/weathers";
             using (HttpClient httpClient = new HttpClient())
             {
                 Task<HttpResponseMessage> reponse = httpClient.DeleteAsync(uri);
@@ -64,7 +64,7 @@ namespace BLL
     }
 
         /*-------------------METHODE COUNTRY-----------------------------------*/
-        public List<Country> getCountries()
+        public List<Country> GetCountries()
         {
             //want to access this link
             string uri = baseUri;
@@ -112,7 +112,7 @@ namespace BLL
         }
 
         /*-------------------METHODE CITY-----------------------------------*/
-        public List<City> getCities()
+        public List<City> GetCities()
         {
             //want to access this link
             string uri = baseUri;
@@ -160,7 +160,7 @@ namespace BLL
         }
 
         /*-------------------METHODE CANTON-----------------------------------*/
-        public List<Canton> getCantons()
+        public List<Canton> GetCantons()
         {
             //want to access this link
             string uri = baseUri;
@@ -198,6 +198,54 @@ namespace BLL
         }
 
         public bool DeleteCantons(int i)
+        {
+            string uri = baseUri;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                Task<HttpResponseMessage> reponse = httpClient.DeleteAsync(uri);
+                return reponse.Result.IsSuccessStatusCode;
+            }
+        }
+
+        /*-------------------METHODE CITY-----------------------------------*/
+        public List<State> GetStates()
+        {
+            //want to access this link
+            string uri = baseUri;
+
+            HttpClient client = new HttpClient();
+            //async is for access the link and do something else
+            //new thread
+            Task<string> response = client.GetStringAsync(uri);
+            return JsonConvert.DeserializeObject<List<State>>(response.Result);
+            client.Dispose();
+        }
+
+        public bool PostStates(State c)
+        {
+            string uri = baseUri;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                string pro = JsonConvert.SerializeObject(c);
+                StringContent frame = new StringContent(pro, Encoding.UTF8, "Application/json");
+                Task<HttpResponseMessage> reponse = httpClient.PostAsync(uri, frame);
+                return reponse.Result.IsSuccessStatusCode;
+            }
+        }
+
+        public bool PutStates(State c)
+        {
+            string uri = baseUri;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                string pro = JsonConvert.SerializeObject(c);
+                StringContent frame = new StringContent(pro, Encoding.UTF8, "Application/json");
+                Task<HttpResponseMessage> reponse = httpClient.PutAsync(uri, frame);
+                return reponse.Result.IsSuccessStatusCode;
+            }
+        }
+
+        public bool DeleteStates(int i)
         {
             string uri = baseUri;
             using (HttpClient httpClient = new HttpClient())
