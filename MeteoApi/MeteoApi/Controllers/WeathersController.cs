@@ -24,6 +24,16 @@ namespace MeteoApi.Controllers
             return query;
         }
 
+        [HttpGet]
+        [Route("api/weathers/{city}")]
+        public IQueryable<Weather> GetWeathers(string city)
+        {
+            var query = from weather in db.Weathers.Include("City").Where(w => w.City.Name.ToLower().Contains(city)).OrderBy(w => w.Date)
+                        select weather;
+            return query;
+        }
+
+
 
         // GET: api/Weathers/5
         [ResponseType(typeof(Weather))]

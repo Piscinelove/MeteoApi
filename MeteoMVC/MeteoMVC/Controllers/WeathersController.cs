@@ -12,7 +12,7 @@ namespace MeteoMVC.Controllers
     public class WeathersController : Controller
     {
         // GET: Weathers
-        public ActionResult Index()
+        public ActionResult Index(string name)
         {
             /*
                 Weather w = new Weather();
@@ -28,7 +28,21 @@ namespace MeteoMVC.Controllers
                 access.PostWeathers(w);
             */
             AccessWebAPI access = new AccessWebAPI();
-            return View(access.GetWeathers());
+            IndexVM vm = new IndexVM();
+            if(name == null)
+            {
+                vm.Weathers = access.GetWeathers();
+                vm.Cities = access.GetCities();
+                vm.Cantons = access.GetCantons();
+            }
+            else
+            {
+                vm.SearchedText = name;
+                vm.Weathers = access.GetWeathersByCity(name);
+                vm.Cities = access.GetCities();
+                vm.Cantons = access.GetCantons();
+            }
+            return View(vm);
         }
 
         public ActionResult Create()

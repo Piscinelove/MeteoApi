@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DTO.Weather>
+﻿@model MeteoMVC.Models.IndexVM
 
 @{
     ViewBag.Title = "Index";
@@ -9,13 +9,39 @@
 <button class="button">
     @Html.ActionLink("Create New", "Create")
 </button>
-<table class="table">
+<div class="row">
+    @using (Ajax.BeginForm("Index", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "weathersList" }))
+    {
+        <div class="col-lg-2">
+            <div class="input-group">
+                @if (@Model.SearchedText == null)
+                {
+                    <input type="text" name="name" class="form-control" placeholder="Search by city" />
+
+                }
+                else
+                {
+                    <input type="text" name="name" class="form-control" value="@Model.SearchedText" />
+                }
+
+                <span class="input-group-btn ">
+                    <button type="submit" class="btn btn-primary">search</button>
+                </span>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+<table class="table" id="weathersList">
     <tr class="trHead">
         <th>
            Weather
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            Date
         </th>
         <th>
             Minimum
@@ -40,7 +66,7 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Weathers) {
     <tr class="tr">
         <td>
        @switch (item.State.Id)

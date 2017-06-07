@@ -42,6 +42,19 @@ namespace BLL
             client.Dispose();
         }
 
+        public List<Weather>  GetWeathersByCity(string city)
+        {
+            //want to access this link
+            string uri = baseUri + "/weathers/" + city;
+
+            HttpClient client = new HttpClient();
+            //async is for access the link and do something else
+            //new thread
+            Task<string> response = client.GetStringAsync(uri);
+            return JsonConvert.DeserializeObject<List<Weather>>(response.Result);
+            client.Dispose();
+        }
+
         public bool PostWeathers(Weather w)
         {
             string uri = baseUri + "/weathers";
@@ -189,7 +202,7 @@ namespace BLL
         public List<Canton> GetCantons()
         {
             //want to access this link
-            string uri = baseUri;
+            string uri = baseUri + "/cantons";
 
             HttpClient client = new HttpClient();
             //async is for access the link and do something else
@@ -201,7 +214,7 @@ namespace BLL
 
         public bool PostCantons(Canton c)
         {
-            string uri = baseUri;
+            string uri = baseUri + "/cantons";
             using (HttpClient httpClient = new HttpClient())
             {
                 string pro = JsonConvert.SerializeObject(c);
@@ -213,7 +226,7 @@ namespace BLL
 
         public bool PutCantons(Canton c)
         {
-            string uri = baseUri;
+            string uri = baseUri + "/cantons/"+c.Id;
             using (HttpClient httpClient = new HttpClient())
             {
                 string pro = JsonConvert.SerializeObject(c);
@@ -223,9 +236,9 @@ namespace BLL
             }
         }
 
-        public bool DeleteCantons(int i)
+        public bool DeleteCantons(int id)
         {
-            string uri = baseUri;
+            string uri = baseUri + "/cantons/"+id;
             using (HttpClient httpClient = new HttpClient())
             {
                 Task<HttpResponseMessage> reponse = httpClient.DeleteAsync(uri);
