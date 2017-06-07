@@ -33,8 +33,6 @@ namespace MeteoApi.Controllers
             return query;
         }
 
-
-
         // GET: api/Weathers/5
         [ResponseType(typeof(Weather))]
         public IHttpActionResult GetWeather(int id)
