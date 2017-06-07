@@ -1,5 +1,11 @@
-﻿*{ margin: auto; padding: 0;}
+﻿
 
+
+html {
+    /* To make use of full height of page*/
+    min-height: 100%;
+    margin: 0;
+}
 
 body{
     background: #c9dbe9;
@@ -7,6 +13,7 @@ body{
 	background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
 	background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%);
     overflow:hidden;
+
 }
 #clouds{
     position:absolute;

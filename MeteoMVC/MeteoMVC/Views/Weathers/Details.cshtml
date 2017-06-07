@@ -9,50 +9,98 @@
 <div>
     <h4>Weather</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+    <div class="row">
+        <div class="col-lg-2">
+            </div>
+    <div class="col-lg-4 details">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TemperatureMin)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.City)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TemperatureMin)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.City.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TemperatureMax)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.TemperatureMin)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TemperatureMax)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.TemperatureMin)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Humidity)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.TemperatureMax)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Humidity)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.TemperatureMax)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Precipitation)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Humidity)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Precipitation)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Humidity)
+            </dd>
 
-    </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Precipitation)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Precipitation)
+            </dd>
+
+        </dl>
+    </div>
+    <div class="col-lg-4 details text-left">
+
+        @switch (Model.State.Id)
+        {
+            case 1:
+                <img class="img-responsive" src="~/icon/soleil.png" />
+                break;
+            case 2:
+                <img class="img-responsive" src="~/icon/nuage.png" />
+                break;
+            case 3:
+                <img class="img-responsive" src="~/icon/pluie.png" />
+                break;
+
+            case 4:
+                <img class="img-responsive" src="~/icon/foudre.png" />
+                break;
+            case 5:
+                <img class="img-responsive" src="~/icon/neige.png" />
+                break;
+
+        }
+    </div>
+        <div class="col-lg-2">
+        </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+    </div>
+
+<div class="text">
+    <button type="button" class="btn btn-default btn-sm but back">
+        <span class="glyphicon glyphicon-arrow-left glyphiconBack"></span>  &nbsp
+        @Html.ActionLink("Back to List", "Index")
+    </button>
+
+    <button type="button" class="btn btn-default btn-sm but back">
+        <span class="glyphicon glyphicon glyphicon-pencil glyphiconBack"></span>  &nbsp
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    </button>
+    </div>
