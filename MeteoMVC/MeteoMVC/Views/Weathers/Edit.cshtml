@@ -1,4 +1,4 @@
-﻿@model DTO.Weather
+﻿@model MeteoMVC.Models.WeatherVM
 
 @{
     ViewBag.Title = "Edit";
@@ -15,45 +15,92 @@
         <h4>Weather</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Weather.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Weather.Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Weather.Date, new { htmlAttributes = new { @class = "form-control", @type = "date", @value = "2012-03-22" } })
+                @Html.ValidationMessageFor(model => model.Weather.Date, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TemperatureMin, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Weather.TemperatureMin, "Minimum °C", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TemperatureMin, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TemperatureMin, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Weather.TemperatureMin, new { htmlAttributes = new { @class = "form-control", @type = "number", @max = "50", @min = "-20" } })
+                @Html.ValidationMessageFor(model => model.Weather.TemperatureMin, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TemperatureMax, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Weather.TemperatureMax, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TemperatureMax, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TemperatureMax, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Weather.TemperatureMax, "Maximum °C", new { htmlAttributes = new { @class = "form-control", @type = "number", @max = "50", @min = "-20" } })
+                @Html.ValidationMessageFor(model => model.Weather.TemperatureMax, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Humidity, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Weather.Humidity, "Humidity %", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Humidity, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Humidity, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Weather.Humidity, new { htmlAttributes = new { @class = "form-control", @type = "number", @max = "100", @min = "0", @step = "0.1" } })
+                @Html.ValidationMessageFor(model => model.Weather.Humidity, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Precipitation, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Weather.Precipitation, "Precipitation mm/h", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Precipitation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Precipitation, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Weather.Precipitation, new { htmlAttributes = new { @class = "form-control", @type = "number", @max = "100", @min = "0", @step = "0.1" } })
+                @Html.ValidationMessageFor(model => model.Weather.Precipitation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="cities">
+                City
+            </label>
+            <div class="col-md-10">
+                <select id="cities" name="CheckedCity" class="form-control">
+
+                    @foreach (var city in Model.Cities)
+                    {
+                        if (city.Id == Model.Weather.City.Id)
+                        {
+                            <option selected="selected" value="@city.Id">@city.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@city.Id">@city.Name</option>
+                        }
+
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="states">
+                State
+            </label>
+            <div class="col-md-10">
+                <select id="states" name="CheckedState" class="form-control">
+                    @foreach (var state in Model.States)
+                    {
+                        if (state.Id == Model.Weather.State.Id)
+                        {
+                            <option selected="selected" value="@state.Id">@state.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@state.Id">@state.Name</option>
+                        }
+
+
+
+                    }
+                </select>
             </div>
         </div>
 

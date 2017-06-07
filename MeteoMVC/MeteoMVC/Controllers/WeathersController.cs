@@ -60,7 +60,28 @@ namespace MeteoMVC.Controllers
         public ActionResult Edit(int id)
         {
             AccessWebAPI access = new AccessWebAPI();
-            return View(access.GetWeather(id));
+            WeatherVM vm = new WeatherVM();
+            vm.Weather = access.GetWeather(id);
+            vm.Cities = access.GetCities();
+            vm.States = access.GetStates();
+            return View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(WeatherVM vm)
+        {
+            AccessWebAPI access = new AccessWebAPI();
+            Weather updatedWeather = new Weather();
+            updatedWeather.Id = vm.Weather.Id;
+            updatedWeather.Date = vm.Weather.Date;
+            updatedWeather.TemperatureMin = vm.Weather.TemperatureMin;
+            updatedWeather.TemperatureMax = vm.Weather.TemperatureMax;
+            updatedWeather.Humidity = vm.Weather.Humidity;
+            updatedWeather.Precipitation = vm.Weather.Precipitation;
+            updatedWeather.City = access.GetCity(vm.CheckedCity);
+            updatedWeather.State = access.GetState(vm.CheckedState);
+            access.PutWeathers(updatedWeather);
+            return RedirectToAction("Edit", updatedWeather.Id);
         }
 
         public ActionResult Details(int id)

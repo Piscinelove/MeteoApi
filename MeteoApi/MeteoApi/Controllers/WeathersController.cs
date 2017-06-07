@@ -19,7 +19,7 @@ namespace MeteoApi.Controllers
         // GET: api/Weathers
         public IQueryable<Weather> GetWeathers()
         {
-            var query = from weather in db.Weathers.Include("City")
+            var query = from weather in db.Weathers.Include("City").OrderBy(w => w.Date)
                         select weather;
             return query;
         }
@@ -40,22 +40,30 @@ namespace MeteoApi.Controllers
 
         // PUT: api/Weathers/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutWeather(int id, Weather weather)
+        public IHttpActionResult PutWeather(int id, Weather w)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != weather.Id)
+            if (id != w.Id)
             {
                 return BadRequest();
             }
 
-            db.Cities.Attach(weather.City);
-            db.States.Attach(weather.State);
 
-            db.Entry(weather).State = EntityState.Modified;
+
+            Weather weather = db.Weathers.Where(we => we.Id == w.Id).First();
+            db.Cities.Attach(w.City);
+            db.States.Attach(w.State);
+            weather.Date = w.Date;
+            weather.TemperatureMin = w.TemperatureMin;
+            weather.TemperatureMax = w.TemperatureMax;
+            weather.Humidity = w.Humidity;
+            weather.Precipitation = w.Humidity;
+            weather.State = w.State;
+            weather.City = w.City;
 
             try
             {

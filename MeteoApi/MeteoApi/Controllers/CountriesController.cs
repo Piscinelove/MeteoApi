@@ -37,19 +37,20 @@ namespace MeteoApi.Controllers
 
         // PUT: api/Countries/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCountry(int id, Country country)
+        public IHttpActionResult PutCountry(int id, Country c)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != country.Id)
+            if (id != c.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(country).State = EntityState.Modified;
+            Country country = db.Countries.Where(co => co.Id == c.Id).First();
+            country.Name =c.Name;
 
             try
             {

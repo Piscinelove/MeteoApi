@@ -56,7 +56,7 @@ namespace BLL
 
         public bool PutWeathers(Weather w)
         {
-            string uri = baseUri + "/weathers";
+            string uri = baseUri + "/weathers/"+w.Id;
             using (HttpClient httpClient = new HttpClient())
             {
                 string pro = JsonConvert.SerializeObject(w);
@@ -165,7 +165,7 @@ namespace BLL
 
         public bool PutCities(City c)
         {
-            string uri = baseUri + "/cities";
+            string uri = baseUri + "/cities/" + c.Id;
             using (HttpClient httpClient = new HttpClient())
             {
                 string pro = JsonConvert.SerializeObject(c);
@@ -274,7 +274,7 @@ namespace BLL
 
         public bool PutStates(State c)
         {
-            string uri = baseUri + "/states";
+            string uri = baseUri + "/states/" + c.Id;
             using (HttpClient httpClient = new HttpClient())
             {
                 string pro = JsonConvert.SerializeObject(c);

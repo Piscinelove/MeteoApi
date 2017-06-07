@@ -92,11 +92,11 @@
                     <span class="glyphicon glyphicon-pencil"></span>
                 </a>  |
 
-                <a href="<%= Url.Action('Details',new { id = item.Id })>">
+                <a href='@Url.Action("Details", "Weathers", new { id = item.Id })'>
                     <span class="glyphicon glyphicon-th-list"></span>
                 </a> |
                 
-                <a href="<%= Url.Action('Delete',new { id = item.Id })>">
+                <a href='@Url.Action("Delete", "Weathers", new { id = item.Id })'>
                     <span class="glyphicon glyphicon-trash"></span>
                 </a>
             

@@ -41,19 +41,21 @@ namespace MeteoApi.Controllers
 
         // PUT: api/Cantons/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCanton(int id, Canton canton)
+        public IHttpActionResult PutCanton(int id, Canton c)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != canton.Id)
+            if (id != c.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(canton).State = EntityState.Modified;
+            Canton canton = db.Cantons.Where(ca => ca.Id == c.Id).First();
+            canton.Name = c.Name;
+
 
             try
             {
