@@ -22,7 +22,8 @@ namespace MeteoApi.Controllers
         [Route("api/weathers")]
         public IQueryable<Weather> GetWeathers()
         {
-            var query = from weather in db.Weathers.Include("City").OrderBy(w => w.Date)
+            DateTime now = DateTime.Now.Date;
+            var query = from weather in db.Weathers.Include("City").Where(w => w.Date >= now).OrderBy(w => w.Date)
                         select weather;
             return query;
         }
@@ -31,7 +32,8 @@ namespace MeteoApi.Controllers
         [Route("api/weathers/search/{city}")]
         public IQueryable<Weather> GetWeathersByCity(string city)
         {
-            var query = from weather in db.Weathers.Include("City").Where(w => w.City.Name.ToLower().Contains(city)).OrderBy(w => w.Date)
+            DateTime now = DateTime.Now.Date;
+            var query = from weather in db.Weathers.Include("City").Where(w => w.City.Name.ToLower().Contains(city)).Where(w => w.Date >= now).OrderBy(w => w.Date)
                         select weather;
             return query;
         }
