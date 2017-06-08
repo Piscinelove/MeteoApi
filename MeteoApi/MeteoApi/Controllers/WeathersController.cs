@@ -16,7 +16,10 @@ namespace MeteoApi.Controllers
     {
         private ModelContainer db = new ModelContainer();
 
+
         // GET: api/Weathers
+        [HttpGet]
+        [Route("api/weathers")]
         public IQueryable<Weather> GetWeathers()
         {
             var query = from weather in db.Weathers.Include("City").OrderBy(w => w.Date)
@@ -25,15 +28,18 @@ namespace MeteoApi.Controllers
         }
 
         [HttpGet]
-        [Route("api/weathers/{city}")]
-        public IQueryable<Weather> GetWeathers(string city)
+        [Route("api/weathers/search/{city}")]
+        public IQueryable<Weather> GetWeathersByCity(string city)
         {
             var query = from weather in db.Weathers.Include("City").Where(w => w.City.Name.ToLower().Contains(city)).OrderBy(w => w.Date)
                         select weather;
             return query;
         }
 
+
         // GET: api/Weathers/5
+        [HttpGet]
+        [Route("api/weathers/{id}")]
         [ResponseType(typeof(Weather))]
         public IHttpActionResult GetWeather(int id)
         {
@@ -46,7 +52,10 @@ namespace MeteoApi.Controllers
             return Ok(weather);
         }
 
+
         // PUT: api/Weathers/5
+        [HttpPut]
+        [Route("api/weathers/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutWeather(int id, Weather w)
         {
@@ -93,6 +102,8 @@ namespace MeteoApi.Controllers
         }
 
         // POST: api/Weathers
+        [HttpPost]
+        [Route("api/weathers")]
         [ResponseType(typeof(Weather))]
         public IHttpActionResult PostWeather(Weather weather)
         {
@@ -110,6 +121,8 @@ namespace MeteoApi.Controllers
         }
 
         // DELETE: api/Weathers/5
+        [HttpDelete]
+        [Route("api/weathers/{id}")]
         [ResponseType(typeof(Weather))]
         public IHttpActionResult DeleteWeather(int id)
         {

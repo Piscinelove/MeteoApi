@@ -45,7 +45,7 @@ namespace BLL
         public List<Weather>  GetWeathersByCity(string city)
         {
             //want to access this link
-            string uri = baseUri + "/weathers/" + city;
+            string uri = baseUri + "/weathers/search/" + city;
 
             HttpClient client = new HttpClient();
             //async is for access the link and do something else
@@ -81,7 +81,7 @@ namespace BLL
 
         public bool DeleteWeathers(int id)
         {
-            string uri = baseUri + "/weathers"+id;
+            string uri = baseUri + "/weathers/"+id;
             using (HttpClient httpClient = new HttpClient())
             {
                 Task<HttpResponseMessage> reponse = httpClient.DeleteAsync(uri);

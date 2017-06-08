@@ -6,30 +6,31 @@
 
 <h2>Index</h2>
 
-<button class="button">
-    @Html.ActionLink("Create New", "Create")
-</button>
-<div class="row">
+<div class="row" style="margin-top:30px; margin-bottom:20px;">
     @using (Ajax.BeginForm("Index", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "weathersList" }))
     {
         <div class="col-lg-2">
             <div class="input-group">
-                @if (@Model.SearchedText == null)
+                @if (@Model.SearchedText == null || @Model.SearchedText == "")
                 {
-                    <input type="text" name="name" class="form-control" placeholder="Search by city" />
+                    <input type="text" name="name" class="form-control searchBar" placeholder="Search by city" />
 
                 }
                 else
                 {
-                    <input type="text" name="name" class="form-control" value="@Model.SearchedText" />
+                    <input type="text" name="name" class="form-control searchBar" value="@Model.SearchedText" />
                 }
 
                 <span class="input-group-btn ">
-                    <button type="submit" class="btn btn-primary">search</button>
+                    <button type="submit" class="btn btn-primary searchButton"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
             </div>
         </div>
     }
+    <button class="button">
+        <span class="glyphicon glyphicon-plus" style="padding-right:15px"></span>
+        @Html.ActionLink("Add a new weather", "Create")
+    </button>
 </div>
 
 
@@ -44,7 +45,7 @@
             Date
         </th>
         <th>
-            Minimum
+            Minimum<span class="glyphicon glyphicon-thermo"></span>
         </th>
         <th>
             Maximum

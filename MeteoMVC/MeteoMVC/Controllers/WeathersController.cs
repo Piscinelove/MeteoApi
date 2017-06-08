@@ -29,7 +29,7 @@ namespace MeteoMVC.Controllers
             */
             AccessWebAPI access = new AccessWebAPI();
             IndexVM vm = new IndexVM();
-            if(name == null)
+            if(name == null || name == "")
             {
                 vm.Weathers = access.GetWeathers();
                 vm.Cities = access.GetCities();
@@ -107,7 +107,8 @@ namespace MeteoMVC.Controllers
         public ActionResult Delete(int id)
         {
             AccessWebAPI access = new AccessWebAPI();
-            return View(access.DeleteWeathers(id));
+            access.DeleteWeathers(id);
+            return RedirectToAction("Index");
         }
 
 
