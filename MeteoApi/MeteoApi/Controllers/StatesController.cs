@@ -19,7 +19,9 @@ namespace MeteoApi.Controllers
         // GET: api/States
         public IQueryable<State> GetStates()
         {
-            return db.States;
+            var query = from state in db.States.OrderBy(s => s.Name)
+                        select state;
+            return query;
         }
 
         // GET: api/States/5

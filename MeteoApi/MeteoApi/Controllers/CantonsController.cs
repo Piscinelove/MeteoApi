@@ -20,7 +20,11 @@ namespace MeteoApi.Controllers
         // GET: api/Cantons
         public IQueryable<Canton> GetCantons()
         {
-            return db.Cantons;
+
+            var query = from canton in db.Cantons.OrderBy(c => c.Name )
+                        select canton;
+            return query;
+          
 
 
         }

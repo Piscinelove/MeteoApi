@@ -19,7 +19,9 @@ namespace MeteoApi.Controllers
         // GET: api/Cities
         public IQueryable<City> GetCities()
         {
-            return db.Cities;
+            var query = from city in db.Cities.OrderBy(c => c.Name)
+                        select city;
+            return query;
         }
 
         // GET: api/Cities/5
