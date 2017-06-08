@@ -31,19 +31,19 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.TemperatureMin)
+               Minimum
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.TemperatureMin)
+                @Html.DisplayFor(model => model.TemperatureMin) °C
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.TemperatureMax)
+                Maximum
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.TemperatureMax)
+                @Html.DisplayFor(model => model.TemperatureMax) °C
             </dd>
 
             <dt>
@@ -51,7 +51,7 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Humidity)
+                @Html.DisplayFor(model => model.Humidity) %
             </dd>
 
             <dt>
@@ -59,7 +59,7 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Precipitation)
+                @Html.DisplayFor(model => model.Precipitation) mm/h
             </dd>
 
         </dl>
@@ -69,20 +69,20 @@
         @switch (Model.State.Id)
         {
             case 1:
-                <img class="img-responsive img" src="~/icon/soleil.png" />
+                <img class="img-responsive img imgDetails" src="~/icon/soleil.png" />
                 break;
             case 2:
-                <img class="img-responsive img" src="~/icon/nuage.png" />
+                <img class="img-responsive img imgDetails" src="~/icon/nuage.png" />
                 break;
             case 3:
-                <img class="img-responsive img" src="~/icon/pluie.png" />
+                <img class="img-responsive img imgDetails" src="~/icon/pluie.png" />
                 break;
 
             case 4:
-                <img class="img-responsive img" src="~/icon/foudre.png" />
+                <img class="img-responsive img imgDetails" src="~/icon/foudre.png" />
                 break;
             case 5:
-                <img class="img-responsive img" src="~/icon/neige.png" />
+                <img class="img-responsive img imgDetails" src="~/icon/neige.png" />
                 break;
 
         }
@@ -103,4 +103,4 @@
         <span class="glyphicon glyphicon glyphicon-pencil glyphiconBack"></span>  &nbsp
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
     </button>
-    </div>
+</div>
