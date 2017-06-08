@@ -34,9 +34,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Weather.TemperatureMax, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Weather.TemperatureMax, "Maximum °C", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Weather.TemperatureMax, "Maximum °C", new { htmlAttributes = new { @class = "form-control", @type = "number", @max = "50", @min = "-20" } })
+                @Html.EditorFor(model => model.Weather.TemperatureMax,  new { htmlAttributes = new { @class = "form-control", @type = "number", @max = "50", @min = "-20" } })
                 @Html.ValidationMessageFor(model => model.Weather.TemperatureMax, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -106,14 +106,17 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default button" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="text">
+    <button type="button" class="btn btn-default btn-sm but back">
+        <span class="glyphicon glyphicon-arrow-left glyphiconBack"></span>  &nbsp
+        @Html.ActionLink("Back to List", "Index")
+    </button>
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
